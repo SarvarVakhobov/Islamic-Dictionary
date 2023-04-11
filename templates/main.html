@@ -1,0 +1,51 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Islamic Dictionary</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">
+  <title>Islamic Dictionary</title>
+</head>
+<body>
+
+	<header>
+		<div class="container">
+			<a href="{% url 'main' %}" style="text-decoration: none; color: #fff;"><h1>Islamic Dictionary</h1></a>
+			{% comment %} <nav>
+				<ul>
+					<li><a href="#">Category 1</a></li>
+					<li><a href="#">Category 2</a></li>
+					<li><a href="#">Category 3</a></li>
+					<li><a href="#">Category 4</a></li>
+					<li><a href="#">Category 5</a></li>
+				</ul>
+			</nav>
+		</div> {% endcomment %}
+	</header>
+
+	<main>
+    <div class="container" style="text-align: center;">
+      {% for cat in objs %}
+        <a href="{% url 'onpage' cat.slug %}" style="text-decoration: none; color: #333;">
+        <div class="post">
+          <h2>{{cat.name}}</h2>
+        </div>
+        </a>
+      {% endfor %}
+		</div>
+	</main>
+
+	<footer>
+		<div class="container">
+			<p>FERUZA KHODJAKULOVA - <a href="https://iiau.uz" style="text-decoration: none; color: #fff;">IIAU.UZ</a></p>
+			<p>Created by <a href="https://Sarvarbek.uz" style="text-decoration: none; color: #fff;">Sarvarbek.uz</a></p>
+			<p>&copy; 2023 All rights reserved</p>
+		</div>
+	</footer>
+
+	<script type="text/javascript" src="script.js"></script>
+
+</body>
+</html>

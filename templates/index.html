@@ -1,0 +1,55 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Islamic Dictionary</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">
+    <title>Islamic Dictionary</title>
+    <script>window.CKEDITOR_BASEPATH = 'statics/ckeditor/ckeditor/';</script>
+    <script type="text/javascript" src="{% static "ckeditor/ckeditor-init.js" %}"></script>
+    <script type="text/javascript" src="{% static "ckeditor/ckeditor/ckeditor.js" %}"></script>
+</head>
+<body>
+
+	<header>
+		<div class="container">
+			<a href="{% url 'main' %}" style="text-decoration: none; color: #fff;"><h1>Islamic Dictionary</h1></a>
+			<nav>
+				<ul>
+                    {% for cat in categories %}
+					<li><a href="{% url 'onpage' cat.slug %}">{{cat.name}}</a></li>
+                    {% endfor %}
+				</ul>
+			</nav>
+		</div>
+	</header>
+
+	<main>
+		<div class="container">
+            {% for word in words %}
+			<div class="post">
+				<h2>{{word.title}}</h2>
+                {% if word.image %}
+				<img src="{{word.image.url}}">
+                {% endif %}
+				<p>{{word.text|safe}}</p>
+			</div>
+            {% endfor %}
+
+		</div>
+	</main>
+
+	<footer>
+		<div class="container">
+			<p>FERUZA KHODJAKULOVA - <a href="https://iiau.uz" target="_blank" style="text-decoration: none; color: #fff;">IIAU.UZ</a></p>
+			<p>Created by <a href="https://Sarvarbek.uz" target="_blank" style="text-decoration: none; color: #fff;">Sarvarbek.uz</a></p>
+			<p>&copy; 2023 All rights reserved</p>
+		</div>
+	</footer>
+
+	<script type="text/javascript" src="script.js"></script>
+
+</body>
+</html>
